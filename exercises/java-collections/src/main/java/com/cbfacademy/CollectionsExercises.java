@@ -1,8 +1,6 @@
 package com.cbfacademy;
 
 import java.util.*;
-import java.util.LinkedList;
-import java.util.Stack;
 
 public class CollectionsExercises {
 
@@ -53,29 +51,50 @@ public class CollectionsExercises {
 
     public ArrayDeque<Integer> useArrayDeque() {
         // TODO: create an empty arrayDeque
+        ArrayDeque<Integer> integers = new ArrayDeque<>();
+
         // - add 5, 6, 8, 9 to the the stack
+        // Create a List with multiple elements
+        // a way to add mulitple elements at a time into a lsit
+        List<Integer> elementsToAdd = List.of(5, 6, 8, 9);
+        integers.addAll(elementsToAdd);
+
         // - print the first element of the queue on the screen
+        System.out.println(integers.getFirst());
         // - print the last element of the queue on the screen
+        System.out.println(integers.getLast());
         // - invoke the method poll() on the queue and print the result on the screen
+        System.out.println(integers.poll());
         // - invoke the element() method on the queue and print the result on the screen
+        System.out.println(integers.element());
         // - return the queue
-        throw new RuntimeException("Not implemented");
+        return integers;
     }
 
     public HashMap<Integer, String> useHashMap() {
         // TODO: create an empty hash map
+        HashMap<Integer, String> languages = new HashMap<>();
         // - add {1, TypeScript} entry to the map
+        languages.put(1, "TypeScript");
         // - add {2, Kotlin} entry to the map
+        languages.put(2, "Kotlin");
         // - add {3, Python} entry to the map
+        languages.put(3, "Python");
         // - add {4, Java} entry to the map
+        languages.put(4, "Java");
         // - add {5, JavaScript} entry to the map
+        languages.put(5, "JavaScript");
         // - add {6, Rust} entry to the map
+        languages.put(6, "Rust");
         // - determine the set of keys from the map and print it on the screen
-        // - determine the set of keys from the map and print it on the screen
+        System.out.println(languages.keySet());
+        // - determine values of the map and print it on the screen
+        System.out.println(languages.values());
         // - determine whether the map contains "English" as a language and print the
         // result on the screen
+        System.out.println(languages.containsValue("English"));
         // - return the map
-        throw new RuntimeException("Not implemented");
+        return languages;
     }
 
     public String getName() {
