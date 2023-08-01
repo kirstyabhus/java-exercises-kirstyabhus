@@ -2,7 +2,11 @@ package com.cbfacademy;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class CollectionsAssignment {
 
@@ -11,12 +15,20 @@ public class CollectionsAssignment {
      * than the indicated integer. The remaining elements retain their original
      * ordering.
      *
-     * @param list   - the list of integers
+     * @param list     - the list of integers
      * @param minValue the minimum value to retain
      */
     public static void removeSmallInts(List<Integer> list, int minValue) {
-        // Your solution must traverse the list from last to first element
-        // removing any values less than minValue.
+        // get length of the list
+        int length = list.size();
+
+        // traverse from end of the list to the first element, removing items less than
+        // minvalue
+        for (int i = length - 1; i >= 0; i--) {
+            if (list.get(i) < minValue) {
+                list.remove(i);
+            }
+        }
     }
 
     /**
@@ -28,7 +40,15 @@ public class CollectionsAssignment {
      */
     public static boolean containsDuplicates(Collection<Integer> integers) {
         // Your solution must not use any loops.
-        return false;
+
+        // make a set of the list
+        HashSet<Integer> intSet = new HashSet<>(integers);
+
+        // if set length different to original list then there were duplicates
+        if (intSet.size() == integers.size()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -44,11 +64,16 @@ public class CollectionsAssignment {
      * @param ints1 - the first collection
      * @param ints2 - the second collection
      * @return A sorted ArrayList containing the integers that appear in either
-     * collection.
+     *         collection.
      */
     public static ArrayList<Integer> inEither(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<Integer>();
+
+        Set<Integer> set1 = new HashSet<>(ints1);
+        Set<Integer> newSet = new HashSet<>(ints2);
+
+        newSet.addAll(set1);
+        return new ArrayList<>(newSet);
     }
 
     /**
@@ -62,11 +87,15 @@ public class CollectionsAssignment {
      * @param ints1 - the first collection
      * @param ints2 - the second collection
      * @return An ArrayList containing the integers that appear in both
-     * collections.
+     *         collections.
      */
     public static ArrayList<Integer> inBoth(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>(ints1);
+        Set<Integer> newSet = new HashSet<>(ints2);
+
+        newSet.addAll(set1);
+        return new ArrayList<>(newSet);
     }
 
     /**
