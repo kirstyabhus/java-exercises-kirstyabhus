@@ -1,29 +1,25 @@
 package com.cbfacademy;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+import java.io.IOException;;
 
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
         String filePath = "C:///Users/kabhu/cbfacademy/java-exercises-kirstyabhus/exercises/input-output/src/main/resources/exercise.txt";
-        try (
-                FileInputStream file = new FileInputStream(filePath);
-                InputStreamReader streamReader = new InputStreamReader(file);
-                LineNumberReader lineReader = new LineNumberReader(streamReader))
 
-        {
-            String outputLine = lineReader.readLine();
-            while (outputLine != null) {
-                System.out.printf("%d: %s%n", lineReader.getLineNumber(), outputLine);
-                outputLine = lineReader.readLine();
-            }
+        // file reading (upgraded)
+        try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
+            stream.forEach(System.out::println);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("File reading exception: " + e.getMessage());
         }
 
-        // output
+        // file writing
 
         String filePath2 = "C:/Users/kabhu/cbfacademy/java-exercises-kirstyabhus/exercises/input-output/src/main/java/com/cbfacademy/hello.txt";
         try (
