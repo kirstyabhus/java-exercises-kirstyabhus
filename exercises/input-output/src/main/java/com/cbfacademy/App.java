@@ -19,6 +19,24 @@ public class App {
             System.out.println("File reading exception: " + e.getMessage());
         }
 
+        // create a new file
+        // try-catch blcok is necessary because it throws a IOException if an error
+        // occurs
+        try {
+            File myObj = new File("filename.txt");
+            // createNewFile() method can be used to create a new file. This method returns
+            // a boolean.
+            if (myObj.createNewFile()) {
+                // true is returned if file successfully created
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                // false is returned if file already exists
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("File creation exception: " + e.getMessage());
+        }
+
         // file writing
 
         String filePath2 = "C:/Users/kabhu/cbfacademy/java-exercises-kirstyabhus/exercises/input-output/src/main/java/com/cbfacademy/hello.txt";
